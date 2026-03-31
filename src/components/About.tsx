@@ -135,7 +135,7 @@ const ParallaxImageCard = () => {
         </svg>
       </motion.div>
       <div className="absolute inset-0 rounded-3xl" style={{ border:"1px solid rgba(255,255,255,0.08)", background:"linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 60%)" }}/> */}
-      <img src= "/images/Making Knowledge Visible.png" alt="Parallax Visual" className="w-full h-full object-cover"/>
+      <img src= "/images/Making Knowledge Visible.webp" alt="Parallax Visual" className="w-full h-full object-cover"/>
      </div>
   );
 };
@@ -346,7 +346,7 @@ const About = () => (
       {/* ── SECTION 3 ── */}
       <div className="grid lg:grid-cols-5 gap-6 items-stretch">
         <motion.div className="lg:col-span-3 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between"
-          style={{ backgroundImage:`url('/images/our Vision.png')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(10,186,181,0.18)", minHeight:280 }}
+          style={{ backgroundImage:`url('/images/our Vision.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(10,186,181,0.18)", minHeight:280 }}
           initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full -z-0" style={{ background:"radial-gradient(circle,rgba(10,186,181,0.12) 0%,transparent 70%)",transform:"translate(30%,-30%)" }}/>
           <div className="relative z-10">
@@ -367,7 +367,7 @@ const About = () => (
         </motion.div>
         <div className="lg:col-span-2 flex flex-col gap-4">
           <motion.div className="rounded-3xl p-6 flex flex-col gap-3 relative overflow-hidden"
-            style={{ backgroundImage:`url('/images/mission.png')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(196,77,255,0.18)",flex:1 }}
+            style={{ backgroundImage:`url('/images/mission.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(196,77,255,0.18)",flex:1 }}
             initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.1 }}>
             <div className="flex items-center gap-2">
               <span style={{ width:8,height:8,borderRadius:"50%",background:"#c44dff",display:"inline-block",boxShadow:"0 0 8px rgba(196,77,255,0.6)" }}/>
@@ -376,7 +376,7 @@ const About = () => (
             <p className="font-display font-semibold text-base leading-snug">Build AI tools that transform how humans learn, research, and collaborate.</p>
           </motion.div>
           <motion.div className="rounded-3xl p-6 relative overflow-hidden"
-            style={{ backgroundImage:`url('/images/belief.png')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(255,107,157,0.18)",flex:1 }}
+            style={{ backgroundImage:`url('/images/belief.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(255,107,157,0.18)",flex:1 }}
             initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.2 }}>
             <div className="flex items-center gap-2 mb-2">
               <span style={{ width:8,height:8,borderRadius:"50%",background:"#ff6b9d",display:"inline-block",boxShadow:"0 0 8px rgba(255,107,157,0.6)" }}/>
@@ -388,7 +388,7 @@ const About = () => (
       </div>
 
       {/* ── SECTION 5 — ZIGZAG TIMELINE ── */}
-      <div className="" style={{ backgroundImage:`url('/images/journey.png')`, backgroundSize:"cover", backgroundPosition:"center", }}>
+      <div className="" style={{ backgroundImage:`url('/images/journey.webp')`, backgroundSize:"cover", backgroundPosition:"center", }}>
         <motion.div className="mb-16 text-center"
           initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
           <div className="flex items-center justify-center gap-3 mb-4">

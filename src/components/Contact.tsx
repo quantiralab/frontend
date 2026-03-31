@@ -302,7 +302,7 @@ const Contact = () => {
           >
             <div
               className="rounded-3xl p-7 sm:p-9 relative overflow-hidden"
-              style={{ backgroundImage: "url('/images/Contact.png')", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.09)" }}
+              style={{ backgroundImage: "url('/images/Contact.webp')", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.09)" }}
             >
               {/* Corner glow */}
               <div

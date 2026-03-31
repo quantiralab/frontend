@@ -221,7 +221,7 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-24 lg:pt-0"
       style={{
-        backgroundImage: "url(/images/Hero.png)",
+        backgroundImage: "url(/images/Hero.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

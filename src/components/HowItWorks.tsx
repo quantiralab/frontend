@@ -3,7 +3,7 @@ import { Upload, Brain, GitBranch, Share2 } from "lucide-react";
 
 const steps = [
   {
-    icon: "images/Import your content.png",
+    icon: "images/Import your content.webp",
     title: "Import Your Content",
     desc: "Upload documents, paste links, or connect apps. KnoViz ingests anything.",
     color: "#0a8f8c",
@@ -12,7 +12,7 @@ const steps = [
     position: "top-left",
   },
   {
-    icon: "images/AI Analyzes.png",
+    icon: "images/AI Analyzes.webp",
     title: "AI Analyzes & Maps",
     desc: "Our AI identifies key concepts, relationships, and hierarchies instantly.",
     color: "#0a8f8c",
@@ -21,7 +21,7 @@ const steps = [
     position: "top-right",
   },
   {
-    icon: "images/Explore & Refine.png",
+    icon: "images/Explore & Refine.webp",
     title: "Explore & Refine",
     desc: "Interact with your knowledge map — zoom, branch, collapse, and annotate.",
     color: "#9a3fca",
@@ -30,7 +30,7 @@ const steps = [
     position: "bottom-left",
   },
   {
-    icon: "images/Share & Collaborate.png",
+    icon: "images/Share & Collaborate.webp",
     title: "Share & Collaborate",
     desc: "Export anywhere or invite your team to explore and build together.",
     color: "#9a3fca",
@@ -266,7 +266,7 @@ const HowItWorks = () => (
                 }}
               />
               {/* <NeuralCoreSVG /> */}
-              <img src="/images/How KnoViz Works.png" alt="Neural Core" className="w-72 h-68 object-contain" />
+              <img src="/images/How KnoViz Works.webp" alt="Neural Core" className="w-72 h-68 object-contain" />
             </div>
           </motion.div>
 

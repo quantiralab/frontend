@@ -74,7 +74,7 @@ const HubCircle = () => (
         transition={{ duration: 2, repeat: Infinity, delay: i * 0.7 }}
       />
     ))}
-<img src="/images/Everything you need to map knowledge.png" alt="Knowledge Core" className="w-36 h-36 object-contain relative z-10" />
+<img src="/images/Everything you need to map knowledge.webp" alt="Knowledge Core" className="w-36 h-36 object-contain relative z-10" />
     {/* centre badge */}
     {/* <motion.div
       className="relative z-10 flex flex-col items-center justify-center rounded-full text-center"

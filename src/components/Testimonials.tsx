@@ -14,7 +14,7 @@ const testimonials = [
     quote: "QuantiraViz turned our 250-page research reports into interactive, explorable knowledge maps our team actually uses. It's like Google Maps—but for ideas and insights.",
     name: "Steffani Nina",
     role: "Head of Research, Synapse Labs",
-    avatar: "/images/17.png",
+    avatar: "/images/17.webp",
     image: null as string | null,
     color: TEAL,
     stats: [
@@ -35,7 +35,7 @@ const testimonials = [
     quote: "We replaced three separate tools with QuantiraViz. The visual knowledge mapping is incredibly intuitive, and the real-time collaboration features have transformed how our team works together.",
     name: "Daniel Kim",
     role: "Product Lead, NovaTech",
-    avatar: "/images/19.png",
+    avatar: "/images/19.webp",
     image: null as string | null,
     color: PURPLE,
     stats: [
@@ -56,7 +56,7 @@ const testimonials = [
     quote: "I mapped my entire thesis literature review in 20 minutes. What used to take weeks of manual work is now instant.",
     name: "Steffani Lia",
     role: "PhD Candidate, MIT",
-    avatar: "/images/18.png",
+    avatar: "/images/18.webp",
     image: null as string | null,
     color: TEAL,
     stats: [
@@ -77,7 +77,7 @@ const testimonials = [
     quote: "The best knowledge visualization tool I've ever used. Period. Our team productivity increased 40% in the first month.",
     name: "Jammes Andrew",
     role: "CEO, DataBridge",
-    avatar: "/images/20.png",
+    avatar: "/images/20.webp",
     image: null as string | null,
     color: PURPLE,
     stats: [

@@ -272,7 +272,7 @@ const FAQ = () => {
     <section 
       className="section-padding relative overflow-hidden"
       style={{
-        backgroundImage: `url('/images/faq.png')`,
+        backgroundImage: `url('/images/faq.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
