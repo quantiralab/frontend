@@ -7,11 +7,11 @@ const PURPLE = "#9a3fca";
 const BG     = "#0c0f12";
 
 const navItems = [
-  { label: "Home",         icon: Map,         href: "#"           },
-  { label: "How it Works", icon: BookOpen,     href: "#how-it-works"},
-  { label: "Features",     icon: LayoutGrid,   href: "#features"   },
-  { label: "Pricing",      icon: DollarSign,   href: "#pricing"    },
-  { label: "Company",      icon: Building2,    href: "#about"      },
+  { label: "Home",         icon: Map,         href: "/"               },
+  { label: "How it Works", icon: BookOpen,     href: "/#how-it-works" },
+  { label: "Features",     icon: LayoutGrid,   href: "/#features"     },
+  { label: "Pricing",      icon: DollarSign,   href: "/#pricing"      },
+  { label: "Company",      icon: Building2,    href: "/#about"        },
 ];
 
 const Navbar = () => {
@@ -81,7 +81,9 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <img src="/images/Logo.svg" alt="KnoViz Logo" className="w-36 h-36" />
+        <a href="/" aria-label="Go to homepage">
+          <img src="/images/Logo.svg" alt="KnoViz Logo" className="w-36 h-36" />
+        </a>
         {/* <a href="#" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center"
@@ -114,7 +116,8 @@ const Navbar = () => {
           >
             Log in
           </button> */}
-          <motion.button
+          <motion.a
+            href="/QuantiraViz"
             className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-semibold"
             style={{
               background: `linear-gradient(135deg, ${TEAL}, ${PURPLE})`,
@@ -124,8 +127,8 @@ const Navbar = () => {
             whileHover={{ scale: 1.05, boxShadow: `0 0 30px ${TEAL}60` }}
             whileTap={{ scale: 0.97 }}
           >
-             QuantiraViz <ArrowRight size={13} strokeWidth={2.5} />
-          </motion.button>
+            QuantiraViz <ArrowRight size={13} strokeWidth={2.5} />
+          </motion.a>
         </div>
       </motion.div>
 
@@ -246,7 +249,7 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
+        <a href="/" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center"
             style={{
@@ -359,7 +362,8 @@ const Navbar = () => {
               >
                 Log in
               </button>
-              <button
+              <a
+                href="/QuantiraViz"
                 className="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
                 style={{
                   background: `linear-gradient(135deg, ${TEAL}, ${PURPLE})`,
@@ -367,8 +371,8 @@ const Navbar = () => {
                   boxShadow: `0 0 20px ${TEAL}35`,
                 }}
               >
-                Start free <ArrowRight size={14} />
-              </button>
+                Explore QuantiraViz <ArrowRight size={14} />
+              </a>
             </div>
           </motion.div>
         )}

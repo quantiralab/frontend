@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ScrollToHash from "@/components/ScrollToHash.tsx";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Privacy from "./pages/Privacy.tsx";
+import Privacy from "./pages/privacy.tsx";
 import Terms from "./pages/Terms.tsx";
+import QuantiraViz from "./pages/QuantiraViz.tsx";
 import CheckoutSandbox from "@/components/Checkout.tsx";
 import CookiesBanner from "@/components/CookiesBanner.tsx";
 
@@ -19,8 +21,11 @@ const App = () => (
       <Sonner />
       <CookiesBanner />
       <BrowserRouter>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/QuantiraViz" element={<QuantiraViz />} />
+          <Route path="/quantiraviz" element={<QuantiraViz />} />
           <Route path="/checkout" element={<CheckoutSandbox />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

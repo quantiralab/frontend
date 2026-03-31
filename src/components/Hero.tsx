@@ -331,14 +331,15 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <motion.button
-              className="btn-gradient flex items-center gap-2 text-base px-7 py-3.5 rounded-xl font-semibold"
+            <motion.a
+              href="/QuantiraViz"
+              className="btn-gradient inline-flex items-center gap-2 text-base px-7 py-3.5 rounded-xl font-semibold"
               whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(10,186,181,0.45)" }}
               whileTap={{ scale: 0.97 }}
             >
-              Start Visualizing Free
+              Explore QuantiraViz
               <ArrowRight size={16} strokeWidth={2.5} />
-            </motion.button>
+            </motion.a>
 
             {/* <motion.button
               className="flex items-center gap-2 text-sm font-medium px-5 py-3.5 rounded-xl transition-all duration-200"
