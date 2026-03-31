@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 6%;
+    --foreground: 170 30% 92%;
+
+    --card: 210 18% 10%;
+    --card-foreground: 170 30% 92%;
+
+    --popover: 210 18% 10%;
+    --popover-foreground: 170 30% 92%;
+
+    --primary: 178 90% 38%;
+    --primary-foreground: 210 20% 6%;
+
+    --secondary: 171 65% 61%;
+    --secondary-foreground: 210 20% 6%;
+
+    --muted: 210 15% 16%;
+    --muted-foreground: 170 15% 60%;
+
+    --accent: 330 60% 20%;
+    --accent-foreground: 330 100% 90%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 12% 18%;
+    --input: 210 12% 18%;
+    --ring: 178 90% 38%;
+
+    --radius: 0.75rem;
+
+    /* KnoViz brand tokens */
+    --teal: 178 90% 38%;
+    --teal-bright: 171 65% 61%;
+    --teal-soft: 161 65% 81%;
+    --pink-soft: 338 100% 96%;
+
+    --gradient-primary: linear-gradient(135deg, #0ABAB5, #56DFCF);
+    --gradient-hero: linear-gradient(135deg, #0ABAB5 0%, #56DFCF 50%, #ADEED9 100%);
+    --gradient-accent: linear-gradient(135deg, #ff6b9d, #c44dff, #0ABAB5);
+    --gradient-glow: radial-gradient(circle, rgba(10,186,181,0.25) 0%, transparent 70%);
+    --gradient-card: linear-gradient(135deg, rgba(10,186,181,0.08), rgba(196,77,255,0.05));
+    --gradient-vibrant: linear-gradient(135deg, #0ABAB5 0%, #56DFCF 30%, #c44dff 70%, #ff6b9d 100%);
+
+    --shadow-glow: 0 0 40px rgba(10,186,181,0.3);
+    --shadow-card: 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-hover: 0 16px 48px rgba(10,186,181,0.25);
+    --shadow-pink: 0 0 30px rgba(255,107,157,0.2);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 210 20% 8%;
+    --sidebar-foreground: 170 30% 92%;
+    --sidebar-primary: 178 90% 38%;
+    --sidebar-primary-foreground: 210 20% 6%;
+    --sidebar-accent: 210 15% 16%;
+    --sidebar-accent-foreground: 170 30% 92%;
+    --sidebar-border: 210 12% 18%;
+    --sidebar-ring: 178 90% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(10, 15, 20, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(10,186,181,0.15);
+    box-shadow: var(--shadow-card);
+  }
+  .glass-card {
+    background: rgba(10, 15, 20, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(10,186,181,0.12);
+    @apply rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+  .glass-card:hover {
+    border-color: rgba(10,186,181,0.3);
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  .gradient-text-hero {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-vibrant);
+  }
+  .gradient-text-pink {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ff6b9d, #c44dff);
+  }
+  .btn-gradient {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    background-image: var(--gradient-primary);
+    color: hsl(210 20% 6%);
+    box-shadow: 0 4px 20px rgba(10,186,181,0.4), 0 0 60px rgba(10,186,181,0.15);
+  }
+  .btn-gradient:hover {
+    box-shadow: 0 8px 32px rgba(10,186,181,0.6), 0 0 80px rgba(10,186,181,0.25);
+    transform: translateY(-2px);
+  }
+  .btn-gradient::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+  }
+  .btn-gradient:hover::after {
+    @apply opacity-100;
+    animation: shine 0.6s ease-in-out;
+  }
+  .btn-outline-glow {
+    @apply rounded-xl border-2 px-6 py-3 font-semibold transition-all duration-300;
+    border-color: #0ABAB5;
+    color: #56DFCF;
+  }
+  .btn-outline-glow:hover {
+    background: rgba(10,186,181,0.12);
+    box-shadow: 0 0 30px rgba(10,186,181,0.3), inset 0 0 20px rgba(10,186,181,0.05);
+    transform: translateY(-2px);
+  }
+  .glow-border {
+    @apply relative;
+    box-shadow: 0 0 0 1px rgba(10,186,181,0.3), 0 0 40px rgba(10,186,181,0.15);
+  }
+  .glow-border-pink {
+    @apply relative;
+    box-shadow: 0 0 0 1px rgba(255,107,157,0.3), var(--shadow-pink);
+  }
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
+  }
+  .neon-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #0ABAB5, #c44dff, transparent);
+    box-shadow: 0 0 8px rgba(10,186,181,0.4);
+  }
+}
+
+@layer utilities {
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(10,186,181,0.3); }
+    50% { box-shadow: 0 0 40px rgba(10,186,181,0.6); }
+  }
+  @keyframes pulse-glow-pink {
+    0%, 100% { box-shadow: 0 0 15px rgba(255,107,157,0.2); }
+    50% { box-shadow: 0 0 35px rgba(255,107,157,0.5); }
+  }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 5s ease-in-out 1s infinite;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  .animate-pulse-glow-pink {
+    animation: pulse-glow-pink 4s ease-in-out infinite;
+  }
+}
