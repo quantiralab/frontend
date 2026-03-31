@@ -149,9 +149,9 @@ const Contact = () => {
     <section id="contact" className="section-padding relative overflow-hidden">
 
       {/* Background atmosphere */}
-      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 55% 55% at 15% 50%, rgba(10,186,181,0.07) 0%, transparent 65%)" }} />
-      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 45% 45% at 85% 40%, rgba(196,77,255,0.06) 0%, transparent 65%)" }} />
-      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 35% 35% at 50% 90%, rgba(255,107,157,0.05) 0%, transparent 60%)" }} />
+      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 55% 55% at 15% 50%, rgba(10,186,181,0.15) 0%, transparent 65%)" }} />
+      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 45% 45% at 85% 40%, rgba(196,77,255,0.12) 0%, transparent 65%)" }} />
+      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 35% 35% at 50% 90%, rgba(255,107,157,0.10) 0%, transparent 60%)" }} />
 
       <div className="max-w-6xl mx-auto">
 

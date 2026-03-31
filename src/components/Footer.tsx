@@ -1,4 +1,4 @@
-import { Map, Twitter, Github, Linkedin, Youtube } from "lucide-react";
+import { Twitter, Facebook, Linkedin, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const links = {
@@ -6,7 +6,12 @@ const links = {
   Legal: ["Privacy", "Terms"],
 };
 
-const socials = [Twitter, Github, Linkedin, Youtube];
+const socials = [
+  { Icon: Twitter, href: " https://x.com/QuantiraLab", label: "Twitter" },
+  { Icon: Facebook, href: "https://www.facebook.com/QuantiraLab", label: "Facebook" },
+  { Icon: Linkedin, href: "https://linkedin.com", label: "Linkedin" },
+  { Icon: Youtube, href: " https://www.youtube.com/@QuantiraLab", label: "Youtube" },
+];
 
 const linkHrefs: Record<string, Record<string, string>> = {
   Product: {
@@ -25,22 +30,23 @@ const linkHrefs: Record<string, Record<string, string>> = {
 
 const Footer = () => (
   <footer className="border-t border-border/50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-80">
         <div className="lg:col-span-2">
-      <a href="#" className="flex items-center gap-2 mb-4">
+           <img src="/images/Logo.svg" alt="KnoViz Logo" className="w-36 h-36" />
+      {/* <a href="#" className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-[0_0_15px_rgba(10,186,181,0.4)]">
               <Map className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="font-display font-bold text-xl gradient-text">KnoViz</span>
-          </a>
+          </a> */}
           <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-xs">
             Transforming complex data into interactive visual maps that make insights clear, connected, and actionable.
           </p>
           <div className="flex gap-4">
-            {socials.map((Icon, i) => (
-              <a key={i} href="#" className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-secondary hover:bg-primary/10 transition-colors hover:shadow-[0_0_15px_rgba(10,186,181,0.2)]">
-                <Icon className="w-4 h-4" />
+            {socials.map(({ Icon, href, label }, i) => (
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-secondary hover:bg-primary/10 transition-colors hover:shadow-[0_0_15px_rgba(10,186,181,0.2)]">
+                <Icon className="w-4 h-4" title={label} />
               </a>
             ))}
           </div>

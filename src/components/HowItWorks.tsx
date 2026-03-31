@@ -3,7 +3,7 @@ import { Upload, Brain, GitBranch, Share2 } from "lucide-react";
 
 const steps = [
   {
-    icon: Upload,
+    icon: "images/Import your content.png",
     title: "Import Your Content",
     desc: "Upload documents, paste links, or connect apps. KnoViz ingests anything.",
     color: "#0a8f8c",
@@ -12,7 +12,7 @@ const steps = [
     position: "top-left",
   },
   {
-    icon: Brain,
+    icon: "images/AI Analyzes.png",
     title: "AI Analyzes & Maps",
     desc: "Our AI identifies key concepts, relationships, and hierarchies instantly.",
     color: "#0a8f8c",
@@ -21,7 +21,7 @@ const steps = [
     position: "top-right",
   },
   {
-    icon: GitBranch,
+    icon: "images/Explore & Refine.png",
     title: "Explore & Refine",
     desc: "Interact with your knowledge map — zoom, branch, collapse, and annotate.",
     color: "#9a3fca",
@@ -30,7 +30,7 @@ const steps = [
     position: "bottom-left",
   },
   {
-    icon: Share2,
+    icon: "images/Share & Collaborate.png",
     title: "Share & Collaborate",
     desc: "Export anywhere or invite your team to explore and build together.",
     color: "#9a3fca",
@@ -160,16 +160,16 @@ const Card = ({ step, index }: { step: (typeof steps)[0]; index: number }) => {
       </div>
 
       {/* Icon */}
-      <div
+      {/* <div
         className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
         style={{
           background: `linear-gradient(135deg, ${step.color}33, ${step.color}11)`,
           border: `1px solid ${step.color}44`,
           boxShadow: `0 0 16px ${step.color}33`,
         }}
-      >
-        <step.icon className="w-4 h-4" style={{ color: step.color }} />
-      </div>
+      > */}
+        <img src={step.icon} alt={step.title} className="w-12 h-12" style={{ color: step.color }} />
+      {/* </div> */}
 
       {/* Step number watermark */}
       <span
