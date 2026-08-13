@@ -237,27 +237,13 @@ const Navbar = () => {
           borderBottom: `1px solid ${TEAL}18`,
         }}
       >
-        {/* Logo */}
-        <a href="/" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center"
-            style={{
-              background: `linear-gradient(135deg, ${TEAL}, ${TEAL}88)`,
-              boxShadow: `0 0 14px ${TEAL}50`,
-            }}
-          >
-            <Map className="w-4 h-4 text-white" />
-          </div>
-          <span
-            className="font-display font-bold text-base"
-            style={{
-              background: `linear-gradient(90deg, ${TEAL}, ${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            KnoViz
-          </span>
+        {/* Logo — now uses the real brand asset, same as desktop */}
+        <a href="/" aria-label="Go to homepage" className="flex items-center flex-shrink-0">
+          <img
+            src="/images/Logo.svg"
+            alt="KnoViz Logo"
+            className="h-8 w-auto object-contain"
+          />
         </a>
 
         <motion.button

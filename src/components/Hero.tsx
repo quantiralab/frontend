@@ -170,13 +170,6 @@ const KnowledgeMap = () => {
   );
 };
 
-/* ─── BADGE STRIP ───────────────────────────────────── */
-// const badges = [
-//   { icon: Sparkles,   text: "No coding needed",          color: "#0ABAB5" },
-//   { icon: Zap,        text: "Real-time AI mapping",       color: "#c44dff" },
-//   { icon: FileOutput, text: "Export to Notion, PDF, Figma", color: "#ff6b9d" },
-// ];
-
 /* ─── TYPING WORDS ──────────────────────────────────── */
 const words = ["documents", "research", "meetings", "data", "ideas"];
 
@@ -195,7 +188,7 @@ const TypingWord = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.35 }}
-        className="gradient-text-hero inline-block"
+        className="gradient-text-hero inline-block [text-shadow:0_2px_12px_rgba(10,186,181,0.6)]"
       >
         {words[idx]}
       </motion.span>
@@ -219,19 +212,48 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-32 lg:pt-20"
-      style={{
-        backgroundImage: "url(/images/Hero.webp)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
+      className="quantira-hero hero-bg relative min-h-screen flex items-center overflow-hidden pt-28 lg:pt-20 bg-[#0c0f12]"
     >
-      {/* ── Background atmosphere ── */}
-      <div className="absolute inset-0 -z-10">
-        <div style={{ background: "radial-gradient(ellipse 70% 55% at 15% 55%, rgba(10,186,181,0.14) 0%, transparent 60%)", position: "absolute", inset: 0 }} />
-        <div style={{ background: "radial-gradient(ellipse 55% 45% at 85% 25%, rgba(196,77,255,0.11) 0%, transparent 60%)", position: "absolute", inset: 0 }} />
-        <div style={{ background: "radial-gradient(ellipse 40% 40% at 55% 85%, rgba(255,107,157,0.08) 0%, transparent 60%)", position: "absolute", inset: 0 }} />
+      {/*
+        Responsive rules for background image swapping:
+        - Mobile (<640px): Uses 500:500 square ratio image positioned at bottom center.
+        - Tablet (640px - 1023px): Uses 500:500 square ratio image positioned at right center.
+        - Desktop (>=1024px): Preserves original full desktop background asset.
+      */}
+      <style>{`
+        /* Mobile Viewport (< 640px) */
+        @media (max-width: 639px) {
+          .quantira-hero.hero-bg {
+            background-image: url('/images/500-500 ratio hero image.webp') !important;
+            background-position: center bottom -10px !important;
+            background-size: 85% auto !important;
+            background-repeat: no-repeat !important;
+          }
+        }
+        /* Tablet Viewport (640px to 1023px) */
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .quantira-hero.hero-bg {
+            background-image: url('/images/500-500 ratio hero image.webp') !important;
+            background-position: right 10px center !important;
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+          }
+        }
+        /* Desktop Viewport (>= 1024px) */
+        @media (min-width: 1024px) {
+          .quantira-hero.hero-bg {
+            background-position: right center !important;
+            background-size: cover !important;
+          }
+        }
+      `}</style>
+
+      {/* ── Background atmosphere (Clipped inside overflow-hidden to fix left border glow) ── */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        {/* Pinned left-corner green glow */}
+        <div style={{ background: "radial-gradient(ellipse 60% 60% at 0% 50%, rgba(10,186,181,0.22) 0%, transparent 70%)", position: "absolute", inset: 0 }} />
+        <div style={{ background: "radial-gradient(ellipse 50% 40% at 90% 25%, rgba(196,77,255,0.12) 0%, transparent 70%)", position: "absolute", inset: 0 }} />
+        <div style={{ background: "radial-gradient(ellipse 40% 40% at 50% 85%, rgba(255,107,157,0.08) 0%, transparent 70%)", position: "absolute", inset: 0 }} />
 
         {/* Subtle grid */}
         <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: 0.035 }}>
@@ -264,35 +286,38 @@ const Hero = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-10 items-center">
+      {/*
+        Left-to-Right Readability Scrim:
+        Keeps the left 52% dark for crisp text rendering on mobile/tablet,
+        smoothly fading out to transparent on the right so her face and graphic shine through cleanly.
+      */}
+      <div
+        className="absolute inset-0 lg:hidden pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(to right, #0c0f12 0%, rgba(12,15,18,0.95) 52%, rgba(12,15,18,0.25) 80%, transparent 100%)",
+        }}
+      />
 
-        {/* ── LEFT: Copy ── */}
+      {/* Mobile Top-to-Bottom Scrim */}
+      <div
+        className="absolute inset-x-0 top-0 h-[65%] sm:hidden pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(to bottom, #0c0f12 0%, rgba(12,15,18,0.92) 60%, transparent 100%)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-10 items-center" style={{ zIndex: 10 }}>
+
+        {/* ── LEFT: Text Copy Block ── */}
         <motion.div
           initial={{ opacity: 0, x: -36 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-lg lg:max-w-none pb-48 sm:pb-12 lg:pb-0"
         >
-          {/* Eyebrow pill */}
-          {/* <motion.div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-7"
-            style={{ background: "rgba(10,186,181,0.08)", border: "1px solid rgba(10,186,181,0.22)" }}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-          >
-            <motion.span
-              style={{ width: 6, height: 6, borderRadius: "50%", background: "#0ABAB5", display: "inline-block" }}
-              animate={{ boxShadow: ["0 0 6px #0ABAB5", "0 0 16px #0ABAB5", "0 0 6px #0ABAB5"] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <span style={{ fontSize: 11, color: "#0ABAB5", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              AI-powered knowledge maps
-            </span>
-          </motion.div> */}
-
-          {/* Headline */}
+          {/* Headline with text-shadow highlighting */}
           <motion.h1
-            className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] leading-[1.08] mb-5"
+            className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] leading-[1.08] mb-5 text-white [text-shadow:0_4px_20px_rgba(0,0,0,0.95)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.6 }}
@@ -309,14 +334,15 @@ const Hero = () => {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
+              className="[text-shadow:0_2px_12px_rgba(10,186,181,0.4)]"
             >
               Clarity
             </span>
           </motion.h1>
 
-          {/* Sub */}
+          {/* Subtext Paragraph */}
           <motion.p
-            className="text-base sm:text-lg text-muted-foreground max-w-md mb-9 leading-relaxed"
+            className="text-base sm:text-lg text-gray-100 max-w-md mb-9 leading-relaxed font-medium [text-shadow:0_2px_10px_rgba(0,0,0,0.95)]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.38 }}
@@ -333,189 +359,16 @@ const Hero = () => {
           >
             <motion.a
               href="/QuantiraViz"
-              className="btn-gradient inline-flex items-center gap-2 text-base px-7 py-3.5 rounded-xl font-semibold"
-              whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(10,186,181,0.45)" }}
+              className="btn-gradient inline-flex items-center gap-2 text-base px-7 py-3.5 rounded-xl font-semibold text-white shadow-[0_4px_20px_rgba(10,186,181,0.35)]"
+              whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(10,186,181,0.55)" }}
               whileTap={{ scale: 0.97 }}
             >
               Explore QuantiraViz
               <ArrowRight size={16} strokeWidth={2.5} />
             </motion.a>
-
-            {/* <motion.button
-              className="flex items-center gap-2 text-sm font-medium px-5 py-3.5 rounded-xl transition-all duration-200"
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.65)" }}
-              whileHover={{ background: "rgba(255,255,255,0.09)", color: "rgba(255,255,255,0.95)" }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <div
-                className="w-7 h-7 rounded-full flex items-center justify-center"
-                style={{ background: "rgba(10,186,181,0.15)", border: "1px solid rgba(10,186,181,0.3)" }}
-              >
-                <Play size={11} style={{ color: "#0ABAB5", marginLeft: 1 }} />
-              </div>
-              Watch 45s demo
-            </motion.button> */}
           </motion.div>
-
-          {/* Badge strip */}
-          {/* <motion.div
-            className="flex flex-wrap gap-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.65 }}
-          >
-            {badges.map((b, i) => (
-              <motion.span
-                key={i}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium"
-                style={{
-                  background: `${b.color}10`,
-                  border: `1px solid ${b.color}25`,
-                  color: "rgba(255,255,255,0.55)",
-                }}
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7 + i * 0.08 }}
-                whileHover={{ color: "rgba(255,255,255,0.9)", borderColor: `${b.color}55` }}
-              >
-                <b.icon size={12} style={{ color: b.color }} />
-                {b.text}
-              </motion.span>
-            ))}
-          </motion.div> */}
-
-          {/* Social proof */}
-          {/* <motion.div
-            className="flex items-center gap-3 mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-          >
-            
-            <div className="flex -space-x-2">
-              {["#0ABAB5", "#c44dff", "#ff6b9d", "#56DFCF"].map((c, i) => (
-                <div
-                  key={i}
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold"
-                  style={{ background: `${c}22`, border: `2px solid rgba(10,10,14,0.9)`, color: c, zIndex: 4 - i, outline: `1px solid ${c}40` }}
-                >
-                  {["AK", "RS", "JM", "LT"][i]}
-                </div>
-              ))}
-            </div>
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
-              <span style={{ color: "rgba(255,255,255,0.75)", fontWeight: 600 }}>150,000+</span> researchers & teams worldwide
-            </p>
-          </motion.div> */}
         </motion.div>
 
-        {/* ── RIGHT: Map card ── */}
-        {/* <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.92, x: 30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
-        >
-          
-          <div
-            className="absolute -inset-4 rounded-[2.5rem]"
-            style={{
-              background: "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(10,186,181,0.12) 0%, transparent 70%)",
-              filter: "blur(20px)",
-            }}
-          />
-
-          <motion.div
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1000 }}
-          >
-            
-            <div
-              className="relative rounded-3xl overflow-hidden"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.09)",
-                backdropFilter: "blur(16px)",
-                padding: "28px",
-              }}
-            >
-              
-              <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(10,186,181,0.7), rgba(196,77,255,0.5), transparent)" }}
-              />
-
-            
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    {["#ff6b9d", "#ffcc44", "#56DFCF"].map((c) => (
-                      <div key={c} style={{ width: 8, height: 8, borderRadius: "50%", background: c, opacity: 0.7 }} />
-                    ))}
-                  </div>
-                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "monospace" }}>knowledge-map.kviz</span>
-                </div>
-                <div
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg"
-                  style={{ background: "rgba(10,186,181,0.1)", border: "1px solid rgba(10,186,181,0.2)" }}
-                >
-                  <motion.span
-                    style={{ width: 5, height: 5, borderRadius: "50%", background: "#0ABAB5", display: "inline-block" }}
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  />
-                  <span style={{ fontSize: 10, color: "#0ABAB5", fontWeight: 600 }}>AI mapping…</span>
-                </div>
-              </div>
-
-          
-              <div style={{ height: 300 }}>
-                <KnowledgeMap />
-              </div>
-
-              
-              <div
-                className="flex justify-between mt-4 pt-4"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-              >
-                {[
-                  { val: "8", lbl: "concepts", color: "#0ABAB5" },
-                  { val: "9", lbl: "connections", color: "#c44dff" },
-                  { val: "0.3s", lbl: "AI time", color: "#ff6b9d" },
-                ].map(({ val, lbl, color }) => (
-                  <div key={lbl} className="text-center">
-                    <p style={{ fontSize: 16, fontWeight: 700, color, margin: 0 }}>{val}</p>
-                    <p style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", margin: 0 }}>{lbl}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div> */}
-
-          {/* Floating chips */}
-          {/* <motion.div
-            className="absolute -top-4 -right-4 flex items-center gap-2 px-3 py-2 rounded-xl"
-            style={{ background: "rgba(196,77,255,0.12)", border: "1px solid rgba(196,77,255,0.25)", backdropFilter: "blur(12px)" }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: [0, -6, 0] }}
-            transition={{ opacity: { delay: 1, duration: 0.4 }, y: { delay: 1, duration: 3.5, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <Sparkles size={13} style={{ color: "#c44dff" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: "#c44dff" }}>AI insights ready</span>
-          </motion.div> */}
-
-          {/* <motion.div
-            className="absolute -bottom-4 -left-4 flex items-center gap-2 px-3 py-2 rounded-xl"
-            style={{ background: "rgba(255,107,157,0.12)", border: "1px solid rgba(255,107,157,0.25)", backdropFilter: "blur(12px)" }}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: [0, 6, 0] }}
-            transition={{ opacity: { delay: 1.2, duration: 0.4 }, y: { delay: 1.2, duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <Zap size={13} style={{ color: "#ff6b9d" }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: "#ff6b9d" }}>Drag to explore</span>
-          </motion.div> */}
-        {/* </motion.div> */}
       </div>
     </section>
   );
