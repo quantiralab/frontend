@@ -5,7 +5,7 @@ const steps = [
   {
     icon: "images/Import your content.webp",
     title: "Import Your Content",
-    desc: "Upload documents, paste links, or connect apps. KnoViz ingests anything.",
+    desc: "Upload documents, paste links, or connect apps. KnoViz ingests them all.",
     color: "#0a8f8c",
     badge: "LIVE",
     badgeColor: "#0a8f8c",
@@ -23,7 +23,7 @@ const steps = [
   {
     icon: "images/Explore & Refine.webp",
     title: "Explore & Refine",
-    desc: "Interact with your knowledge map — zoom, branch, collapse, and annotate.",
+    desc: "Interact with your knowledge map to zoom, branch, collapse, and annotate.",
     color: "#9a3fca",
     badge: "SECURED",
     badgeColor: "#9a3fca",
@@ -213,7 +213,7 @@ const HowItWorks = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-4">
-         See <span className="gradient-text">how</span> It works 
+         See <span className="gradient-text">how</span> it works
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
           From raw information to visual insight in seconds.

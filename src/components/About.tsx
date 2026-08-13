@@ -21,28 +21,21 @@ const values = [
 ];
 
 const team = [
-  { name: "Aiko Tanaka",   role: "Co-founder & CEO",   initials: "AT", color: "#0ABAB5", bg: "rgba(10,186,181,0.12)"  },
-  { name: "Ravi Mehta",    role: "Co-founder & CTO",   initials: "RM", color: "#c44dff", bg: "rgba(196,77,255,0.12)"  },
-  { name: "Sofia Reyes",   role: "Head of Design",     initials: "SR", color: "#ff6b9d", bg: "rgba(255,107,157,0.12)" },
-  { name: "James O'Brien", role: "Lead AI Researcher", initials: "JO", color: "#56DFCF", bg: "rgba(86,223,207,0.12)"  },
+  { name: "Michael Turner", role: "Founder & CTO", initials: "MT", color: "#0ABAB5", bg: "rgba(10,186,181,0.12)" },
 ];
 
 const milestones = [
   {
-    year: "2021", title: "Founded",       num: "01", tag: "PHASE_INCEPTION",  color: "#0a8f8c",
-    desc: "Three researchers, one whiteboard, one big idea. The seed of QuantiraViz was planted in a late-night conversation about why knowledge stays trapped in documents.",
+    year: "2023", title: "Founded",       num: "01", tag: "PHASE_INCEPTION",  color: "#0a8f8c",
+    desc: "Quantira AI Lab was founded in San Francisco on 14 January 2023 by Michael Turner with a simple belief: knowledge should be seen, not just read.",
   },
   {
-    year: "2022", title: "Seed Round",    num: "02", tag: "PHASE_DISCOVERY",  color: "#9a3fca",
-    desc: "$4M raised. First 500 beta users onboarded. Our AI mapping engine hit 90% accuracy and the team grew from 3 to 12 passionate builders.",
+    year: "2023", title: "Public Launch", num: "02", tag: "PHASE_EXPANSION",  color: "#0a8f8c",
+    desc: "QuantiraViz launched as a public product, turning dense documents and research collections into explorable knowledge maps for everyone.",
   },
   {
-    year: "2023", title: "Public Launch", num: "03", tag: "PHASE_EXPANSION",  color: "#0a8f8c",
-    desc: "50K users signed up in the first 30 days. Product Hunt #1 of the day. Real-time collaboration shipped. The knowledge revolution had begun.",
-  },
-  {
-    year: "2024", title: "Series A",      num: "04", tag: "PHASE_DEPLOYMENT", color: "#9a3fca",
-    desc: "$22M raised. Expanded to 120 countries. Enterprise plan launched with SOC 2 compliance, SSO, and dedicated infrastructure for mission-critical workloads.",
+    year: "2024", title: "Series A",      num: "03", tag: "PHASE_DEPLOYMENT", color: "#9a3fca",
+    desc: "Expanded to teams in more than 120 countries and launched an enterprise plan with SOC 2 compliance, SSO, and dedicated infrastructure for mission-critical workloads.",
   },
 ];
 
@@ -362,7 +355,7 @@ const About = () => (
             </p>
           </div>
           <div className="relative z-10 mt-6 pt-6" style={{ borderTop:"1px solid rgba(10,186,181,0.15)" }}>
-            <p className="text-xs text-muted-foreground">Founded in San Francisco · Remote-first globally</p>
+            <p className="text-xs text-muted-foreground">Founded in San Francisco on 14 January 2023 · Remote-first globally</p>
           </div>
         </motion.div>
         <div className="lg:col-span-2 flex flex-col gap-4">

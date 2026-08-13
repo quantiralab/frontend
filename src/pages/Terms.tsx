@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Terms() {
   useEffect(() => {
@@ -7,9 +9,9 @@ export default function Terms() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-    
-      
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <Navbar />
+
+      <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20">
         {/* Header Section */}
         <div className="mb-16 space-y-4">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#0ABAB5] bg-clip-text text-transparent">
@@ -58,7 +60,7 @@ export default function Terms() {
                   <span className="font-bold text-[#56DFCF]">Country</span> refers to: California, United States
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
-                  <span className="font-bold text-[#56DFCF]">Company</span> refers to quantiralab, 1 Market St, San Francisco, CA 94105, United States.
+                  <span className="font-bold text-[#56DFCF]">Company</span> refers to Quantira AI Lab, 1 Market St, San Francisco, CA 94105, United States.
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
                   <span className="font-bold text-[#56DFCF]">Device</span> means any device that can access the Service such as a computer, a cell phone or a digital tablet.
@@ -73,7 +75,7 @@ export default function Terms() {
                   <span className="font-bold text-[#56DFCF]">Third-Party Social Media Service</span> means any services or content provided by a third party that is displayed or linked to through the Service.
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
-                  <span className="font-bold text-[#56DFCF]">Website</span> refers to quantiralab, accessible from{" "}
+                  <span className="font-bold text-[#56DFCF]">Website</span> refers to Quantira AI Lab, accessible from{" "}
                   <a 
                     href="https://www.quantiralab.com" 
                     target="_blank" 
@@ -229,7 +231,22 @@ export default function Terms() {
           <p className="text-base sm:text-lg text-foreground mb-5">
             If you have any questions about these Terms and Conditions, You can contact us:
           </p>
-          <div className="space-y-2">
+          <div className="space-y-3">
+            <p className="text-base sm:text-lg">
+              Company Address:{" "}
+              <span className="font-semibold">
+                1 Market St, San Francisco, CA 94105, United States
+              </span>
+            </p>
+            <p className="text-base sm:text-lg">
+              Phone:{" "}
+              <a 
+                href="tel:+14156297308" 
+                className="text-[#56DFCF] hover:text-[#0ABAB5] transition-colors font-semibold"
+              >
+                +1 (415) 629-7308
+              </a>
+            </p>
             <p className="text-base sm:text-lg">
               Email:{" "}
               <a 
@@ -257,6 +274,7 @@ export default function Terms() {
         </section>
       </main>
 
+      <Footer />
     </div>
   );
 }

@@ -387,7 +387,7 @@ const TestimonialCard = ({ t, direction }: { t: (typeof testimonials)[0]; direct
     animate={{ opacity: 1, x: 0, scale: 1 }}
     exit={{ opacity: 0, x: direction * -100, scale: 0.95 }}
     transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-    className="absolute inset-0 rounded-2xl overflow-hidden"
+    className="relative rounded-2xl overflow-hidden"
     style={{
       background: `linear-gradient(135deg, #0d1117 0%, ${t.color}0e 100%)`,
       border: `1px solid ${t.color}30`,
@@ -398,7 +398,7 @@ const TestimonialCard = ({ t, direction }: { t: (typeof testimonials)[0]; direct
     <div className="absolute top-5 right-6 font-mono text-5xl font-bold select-none pointer-events-none"
       style={{ color: `${t.color}12` }}>{t.step}</div>
 
-    <div className="p-7 h-full flex flex-col justify-between">
+    <div className="p-6 sm:p-8 md:p-10 pb-8 sm:pb-10 md:pb-12 flex flex-col">
       <div>
         {/* profile row */}
         <div className="flex items-center gap-4 mb-5 pb-5" style={{ borderBottom: `1px solid ${t.color}15` }}>
@@ -450,31 +450,8 @@ const TestimonialCard = ({ t, direction }: { t: (typeof testimonials)[0]; direct
 
 /* ── Section ── */
 const Testimonials = () => {
-  const sectionRef  = useRef<HTMLDivElement>(null);
   const [current, setCurrent]     = useState(0);
   const [direction, setDirection] = useState(1);
-  const isThrottled = useRef(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || isThrottled.current) return;
-      const rect          = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const viewH         = window.innerHeight;
-      const scrolled      = -rect.top;
-      const maxScroll     = sectionHeight - viewH;
-      const progress      = Math.min(Math.max(scrolled / maxScroll, 0), 1);
-      const newIndex      = Math.min(Math.floor(progress * testimonials.length), testimonials.length - 1);
-      if (newIndex !== current) {
-        setDirection(newIndex > current ? 1 : -1);
-        setCurrent(newIndex);
-        isThrottled.current = true;
-        setTimeout(() => { isThrottled.current = false; }, 200);
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [current]);
 
   const prev = () => { if (current === 0) return; setDirection(-1); setCurrent((c) => c - 1); };
   const next = () => { if (current === testimonials.length - 1) return; setDirection(1); setCurrent((c) => c + 1); };
@@ -485,106 +462,109 @@ const Testimonials = () => {
   const col   = t.color;
 
   return (
-    <section ref={sectionRef} className="relative" style={{ height: `${testimonials.length * 100}vh` }}>
+    <section className="relative py-20 sm:py-28 overflow-hidden" style={{ background: BG }}>
 
-      <div className="sticky top-0 h-screen overflow-hidden">
+      {/* ─── BACKGROUND STACK (absolute layers clipped by section, content flows above) ─── */}
 
-        {/* ─── BACKGROUND STACK ─── */}
+      {/* 1. dark base */}
+      <div className="absolute inset-0" style={{ background: BG }} />
 
-        {/* 1. dark base */}
-        <div className="absolute inset-0" style={{ background: BG }} />
+      {/* 2. big radial center glow — very visible */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        animate={{ opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background: `radial-gradient(ellipse 75% 65% at 50% 50%, ${col}22 0%, ${col}08 40%, transparent 70%)`,
+        }}
+      />
 
-        {/* 2. big radial center glow — very visible */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          animate={{ opacity: [0.7, 1, 0.7] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            background: `radial-gradient(ellipse 75% 65% at 50% 50%, ${col}22 0%, ${col}08 40%, transparent 70%)`,
-          }}
-        />
+      {/* 3. grid lines */}
+      <GridLines color={col} />
 
-        {/* 3. grid lines */}
-        <GridLines color={col} />
+      {/* 4. drifting orbs — large and visible */}
+      <DriftingOrbs color={col} />
 
-        {/* 4. drifting orbs — large and visible */}
-        <DriftingOrbs color={col} />
+      {/* 5. canvas neural net */}
+      <NeuralCanvas activeColor={col} />
 
-        {/* 5. canvas neural net */}
-        <NeuralCanvas activeColor={col} />
+      {/* 6. shooting lines */}
+      <ShootingLines color={col} />
 
-        {/* 6. shooting lines */}
-        <ShootingLines color={col} />
+      {/* 7. top + bottom fade so it blends with page */}
+      <div className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+        style={{ background: `linear-gradient(to bottom, ${BG}, transparent)` }} />
+      <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+        style={{ background: `linear-gradient(to top, ${BG}, transparent)` }} />
 
-        {/* 7. top + bottom fade so it blends with page */}
-        <div className="absolute inset-x-0 top-0 h-24 pointer-events-none"
-          style={{ background: `linear-gradient(to bottom, ${BG}, transparent)` }} />
-        <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-          style={{ background: `linear-gradient(to top, ${BG}, transparent)` }} />
+      {/* ─── CONTENT (normal document flow — no negative margins, no sticky cropping) ─── */}
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center" style={{ zIndex: 10 }}>
 
-        {/* ─── CONTENT ─── */}
-        <div className="relative flex flex-col items-center justify-center h-full px-4" style={{ zIndex: 10 }}>
+        {/* 1. Header block — clean spacing */}
+        <motion.div className="text-center mb-12 sm:mb-16 max-w-2xl"
+          initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <motion.div className="w-2 h-2 rounded-full" style={{ background: TEAL }}
+              animate={{ scale: [1, 1.6, 1], opacity: [1, 0.3, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+            <span className="text-xs font-mono tracking-widest" style={{ color: TEAL }}>TESTIMONIALS</span>
+            <div className="h-px w-16" style={{ background: `linear-gradient(90deg, ${TEAL}60, transparent)` }} />
+          </div>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-3">
+            Loved by <span className="gradient-text">curious minds</span>
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            Real stories from teams who map their knowledge
+          </p>
+        </motion.div>
 
-          {/* heading */}
-          <motion.div className="text-center mb-10"
-            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <motion.div className="w-2 h-2 rounded-full" style={{ background: TEAL }}
-                animate={{ scale: [1, 1.6, 1], opacity: [1, 0.3, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-              <span className="text-xs font-mono tracking-widest" style={{ color: TEAL }}>TESTIMONIALS</span>
-              <div className="h-px w-16" style={{ background: `linear-gradient(90deg, ${TEAL}60, transparent)` }} />
-            </div>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-2">
-              Loved by <span className="gradient-text">curious minds</span>
-            </h2>
-            <p className="text-muted-foreground text-base max-w-md mx-auto">
-              Scroll to explore how teams use QuantiraViz
-            </p>
-          </motion.div>
-
-          {/* card stack */}
-          <div className="relative w-full max-w-xl flex-shrink-0" style={{ height: 460 }}>
-            <GhostCard stackIndex={2} color={next2.color} />
-            <GhostCard stackIndex={1} color={next1.color} />
-            <AnimatePresence mode="wait" custom={direction}>
+        {/* 2. Testimonial card — flows naturally below the heading, h-auto */}
+        <div className="relative w-full max-w-4xl mx-auto">
+          <GhostCard stackIndex={2} color={next2.color} />
+          <GhostCard stackIndex={1} color={next1.color} />
+          <motion.div
+            layout
+            className="relative"
+            transition={{ layout: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } }}
+          >
+            <AnimatePresence mode="popLayout" initial={false} custom={direction}>
               <TestimonialCard key={current} t={t} direction={direction} />
             </AnimatePresence>
-          </div>
-
-          {/* controls */}
-          <div className="flex items-center gap-5 mt-8">
-            <motion.button onClick={prev} disabled={current === 0}
-              className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-30"
-              style={{ border: `1px solid ${TEAL}35`, background: `${TEAL}0a`, color: TEAL }}
-              whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-              <ChevronLeft className="w-4 h-4" />
-            </motion.button>
-
-            <div className="flex items-center gap-2">
-              {testimonials.map((item, i) => (
-                <motion.button key={i}
-                  onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  animate={{ width: i === current ? 24 : 8 }}
-                  style={{
-                    background: i === current ? item.color : `${item.color}30`,
-                    boxShadow:  i === current ? `0 0 8px ${item.color}70` : "none",
-                  }} />
-              ))}
-            </div>
-
-            <motion.button onClick={next} disabled={current === testimonials.length - 1}
-              className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-30"
-              style={{ border: `1px solid ${TEAL}35`, background: `${TEAL}0a`, color: TEAL }}
-              whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-              <ChevronRight className="w-4 h-4" />
-            </motion.button>
-          </div>
-
-          <p className="text-xs font-mono mt-3" style={{ color: `${TEAL}45` }}>
-            Step {current + 1} of {testimonials.length} — {t.title}
-          </p>
+          </motion.div>
         </div>
+
+        {/* 3. Controls */}
+        <div className="flex items-center gap-5 mt-10">
+          <motion.button onClick={prev} disabled={current === 0}
+            className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-30"
+            style={{ border: `1px solid ${TEAL}35`, background: `${TEAL}0a`, color: TEAL }}
+            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <ChevronLeft className="w-4 h-4" />
+          </motion.button>
+
+          <div className="flex items-center gap-2">
+            {testimonials.map((item, i) => (
+              <motion.button key={i}
+                onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+                className="h-1.5 rounded-full transition-all duration-300"
+                animate={{ width: i === current ? 24 : 8 }}
+                style={{
+                  background: i === current ? item.color : `${item.color}30`,
+                  boxShadow:  i === current ? `0 0 8px ${item.color}70` : "none",
+                }} />
+            ))}
+          </div>
+
+          <motion.button onClick={next} disabled={current === testimonials.length - 1}
+            className="w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-30"
+            style={{ border: `1px solid ${TEAL}35`, background: `${TEAL}0a`, color: TEAL }}
+            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <ChevronRight className="w-4 h-4" />
+          </motion.button>
+        </div>
+
+        <p className="text-xs font-mono mt-4" style={{ color: `${TEAL}45` }}>
+          Case study {current + 1} of {testimonials.length} — {t.title}
+        </p>
       </div>
     </section>
   );

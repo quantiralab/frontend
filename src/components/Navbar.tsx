@@ -1,31 +1,42 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Map, LayoutGrid, Zap, DollarSign, BookOpen, Building2, ArrowRight, X, Menu } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { Map, LayoutGrid, DollarSign, BookOpen, Building2, ArrowRight, X, Menu } from "lucide-react";
 
 const TEAL   = "#0a8f8c";
 const PURPLE = "#9a3fca";
 const BG     = "#0c0f12";
 
 const navItems = [
-  { label: "Home",         icon: Map,         href: "/"               },
-  { label: "How it Works", icon: BookOpen,     href: "/#how-it-works" },
-  { label: "Features",     icon: LayoutGrid,   href: "/#features"     },
-  { label: "Pricing",      icon: DollarSign,   href: "/#pricing"      },
-  { label: "Company",      icon: Building2,    href: "/#about"        },
+  { label: "Home",         icon: Map,        href: "/"                },
+  { label: "How it Works", icon: BookOpen,   href: "/#how-it-works"    },
+  { label: "Features",     icon: LayoutGrid, href: "/#features"        },
+  { label: "Pricing",      icon: DollarSign, href: "/#pricing"         },
+  { label: "Company",      icon: Building2,  href: "/#about"           },
 ];
 
 const Navbar = () => {
-  const [active, setActive]   = useState(0);
+  const location  = useLocation();
+  const isHome    = location.pathname === "/";
+  const isProduct = location.pathname === "/QuantiraViz" || location.pathname === "/quantiraviz";
+
+  const [active, setActive]     = useState(() => (window.location.pathname === "/" ? 0 : -1));
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Scroll listener for scroll-based active state
+  // Reset pill highlight on route change: home → scroll-driven, sub-routes → none
   useEffect(() => {
+    setActive(isHome ? 0 : -1);
+  }, [isHome]);
+
+  // Scroll listener for scroll-based active state (only on the home route)
+  useEffect(() => {
+    if (!isHome) return;
     let currentActive = 0;
-    
+
     const handleScroll = () => {
       const scrollPos = window.scrollY + 150; // Offset for navbar height and buffer
-      
+
       // Map nav items to section IDs
       const sectionMap = [
         "home",           // Home
@@ -34,7 +45,7 @@ const Navbar = () => {
         "pricing",        // Pricing
         "about",          // Company
       ];
-      
+
       // Loop backwards to find the section we're in
       for (let i = sectionMap.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionMap[i]);
@@ -46,7 +57,7 @@ const Navbar = () => {
           return;
         }
       }
-      
+
       // If no section found, default to home
       setActive(0);
     };
@@ -54,187 +65,164 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     // Initial check on mount
     setTimeout(handleScroll, 100);
-    
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  // Scroll listener for backdrop blur effect
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
+
+  // Scroll listener for glass background + backdrop blur effect
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      {/* ── TOP BAR (logo + CTA) — visible on desktop ── */}
-      <motion.div
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-40 hidden lg:flex items-center justify-between px-10"
-        style={{
-          background: "transparent",
-          backdropFilter: "none",
-          borderBottom: "none",
-          transition: "all 0.3s",
-        }}
-      >
-        {/* Logo */}
-        <a href="/" aria-label="Go to homepage">
-          <img src="/images/Logo.svg" alt="KnoViz Logo" className="w-36 h-36" />
-        </a>
-        {/* <a href="#" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center"
-            style={{
-              background: `linear-gradient(135deg, ${TEAL}, ${TEAL}99)`,
-              boxShadow: `0 0 18px ${TEAL}55`,
-            }}
-          >
-            <Map className="w-4 h-4" style={{ color: "#fff" }} />
-          </div>
-          <span
-            className="font-display font-bold text-lg"
-            style={{
-              background: `linear-gradient(90deg, ${TEAL}, ${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            KnoViz
-          </span>
-        </a> */}
-
-        {/* Right CTAs */}
-        <div className="flex items-center gap-3">
-          {/* <button
-            className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#fff")}
-            onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(255,255,255,0.5)")}
-          >
-            Log in
-          </button> */}
-          <motion.a
-            href="/QuantiraViz"
-            className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-semibold"
-            style={{
-              background: `linear-gradient(135deg, ${TEAL}, ${PURPLE})`,
-              color: "#fff",
-              boxShadow: `0 0 20px ${TEAL}40`,
-            }}
-            whileHover={{ scale: 1.05, boxShadow: `0 0 30px ${TEAL}60` }}
-            whileTap={{ scale: 0.97 }}
-          >
-            QuantiraViz <ArrowRight size={13} strokeWidth={2.5} />
-          </motion.a>
-        </div>
-      </motion.div>
-
-      {/* ── MIDDLE PILL NAV (desktop) — moved to top center ── */}
-      <motion.div
+      {/* ── DESKTOP HEADER (unified container: logo + pill nav + CTA) ── */}
+      <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden lg:block"
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 hidden lg:block"
+        style={{
+          background: scrolled ? "#0c0f12d9" : "transparent",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(10,143,140,0.15)" : "1px solid transparent",
+          boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.35)" : "none",
+          transition: "all 0.3s ease",
+        }}
       >
-        {/* outer glow ring */}
-        <div
-          className="absolute inset-0 rounded-full pointer-events-none"
-          style={{
-            boxShadow: `0 0 0 1px ${TEAL}20, 0 8px 40px ${BG}cc, 0 0 60px ${TEAL}12`,
-          }}
-        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+          {/* Logo */}
+          <a href="/" aria-label="Go to homepage" className="flex items-center flex-shrink-0">
+            <img
+              src="/images/Logo.svg"
+              alt="KnoViz Logo"
+              className="h-9 w-auto object-contain"
+            />
+          </a>
 
-        <div
-          className="flex items-center gap-1 px-2 py-2 rounded-full"
-          style={{
-            background: `linear-gradient(135deg, #13181f 0%, #0e1318 100%)`,
-            border: `1px solid ${TEAL}25`,
-            boxShadow: `0 4px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)`,
-          }}
-        >
-          {navItems.map((item, i) => {
-            const isActive = active === i;
-            return (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                onClick={() => setActive(i)}
-                className="relative flex items-center gap-2.5 cursor-pointer select-none"
-                style={{ textDecoration: "none" }}
-                animate={{
-                  paddingLeft:  isActive ? 18 : 14,
-                  paddingRight: isActive ? 18 : 14,
-                  paddingTop:   10,
-                  paddingBottom: 10,
-                }}
-                transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-              >
-                {/* active pill background */}
-                {isActive && (
-                  <motion.div
-                    layoutId="pill-bg"
-                    className="absolute inset-0 rounded-full"
-                    style={{
-                      background: `linear-gradient(135deg, ${TEAL}22, ${PURPLE}18)`,
-                      border: `1px solid ${TEAL}40`,
-                      boxShadow: `0 0 18px ${TEAL}25, inset 0 1px 0 ${TEAL}30`,
+          {/* Center floating pill nav — absolutely centered, vertically aligned with flex */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            {/* outer glow ring */}
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                boxShadow: `0 0 0 1px ${TEAL}20, 0 8px 40px ${BG}cc, 0 0 60px ${TEAL}12`,
+              }}
+            />
+
+            <div
+              className="flex items-center gap-1 px-2 py-2 rounded-full"
+              style={{
+                background: `linear-gradient(135deg, #13181f 0%, #0e1318 100%)`,
+                border: `1px solid ${TEAL}25`,
+                boxShadow: `0 4px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)`,
+              }}
+            >
+              {navItems.map((item, i) => {
+                const isActive = active === i;
+                return (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setActive(i)}
+                    className="relative flex items-center gap-2.5 cursor-pointer select-none"
+                    style={{ textDecoration: "none" }}
+                    animate={{
+                      paddingLeft:  isActive ? 18 : 14,
+                      paddingRight: isActive ? 18 : 14,
+                      paddingTop:   10,
+                      paddingBottom: 10,
                     }}
-                    transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
-                  />
-                )}
+                    transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                  >
+                    {/* active pill background */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="pill-bg"
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          background: `linear-gradient(135deg, ${TEAL}22, ${PURPLE}18)`,
+                          border: `1px solid ${TEAL}40`,
+                          boxShadow: `0 0 18px ${TEAL}25, inset 0 1px 0 ${TEAL}30`,
+                        }}
+                        transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
+                      />
+                    )}
 
-                {/* icon */}
-                <motion.div
-                  className="relative z-10 flex items-center justify-center rounded-full"
-                  animate={{
-                    color: isActive ? TEAL : "rgba(255,255,255,0.35)",
-                    scale: isActive ? 1.05 : 1,
-                  }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {isActive ? (
+                    {/* icon */}
                     <motion.div
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1 }}
-                      className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{
-                        background: `linear-gradient(135deg, ${TEAL}35, ${PURPLE}25)`,
-                        boxShadow: `0 0 14px ${TEAL}40`,
+                      className="relative z-10 flex items-center justify-center rounded-full"
+                      animate={{
+                        color: isActive ? TEAL : "rgba(255,255,255,0.35)",
+                        scale: isActive ? 1.05 : 1,
                       }}
+                      transition={{ duration: 0.25 }}
                     >
-                      <item.icon size={15} strokeWidth={2} style={{ color: TEAL }} />
+                      {isActive ? (
+                        <motion.div
+                          initial={{ scale: 0.8 }}
+                          animate={{ scale: 1 }}
+                          className="w-8 h-8 rounded-full flex items-center justify-center"
+                          style={{
+                            background: `linear-gradient(135deg, ${TEAL}35, ${PURPLE}25)`,
+                            boxShadow: `0 0 14px ${TEAL}40`,
+                          }}
+                        >
+                          <item.icon size={15} strokeWidth={2} style={{ color: TEAL }} />
+                        </motion.div>
+                      ) : (
+                        <div className="w-8 h-8 flex items-center justify-center">
+                          <item.icon size={16} strokeWidth={1.8} />
+                        </div>
+                      )}
                     </motion.div>
-                  ) : (
-                    <div className="w-8 h-8 flex items-center justify-center">
-                      <item.icon size={16} strokeWidth={1.8} />
-                    </div>
-                  )}
-                </motion.div>
 
-                {/* label — only when active */}
-                <AnimatePresence mode="wait">
-                  {isActive && (
-                    <motion.span
-                      key="label"
-                      initial={{ opacity: 0, width: 0, x: -4 }}
-                      animate={{ opacity: 1, width: "auto", x: 0 }}
-                      exit={{ opacity: 0, width: 0, x: -4 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="relative z-10 text-sm font-semibold whitespace-nowrap overflow-hidden"
-                      style={{ color: TEAL }}
-                    >
-                      {item.label}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.a>
-            );
-          })}
+                    {/* label — only when active */}
+                    <AnimatePresence mode="wait">
+                      {isActive && (
+                        <motion.span
+                          key="label"
+                          initial={{ opacity: 0, width: 0, x: -4 }}
+                          animate={{ opacity: 1, width: "auto", x: 0 }}
+                          exit={{ opacity: 0, width: 0, x: -4 }}
+                          transition={{ duration: 0.25, ease: "easeOut" }}
+                          className="relative z-10 text-sm font-semibold whitespace-nowrap overflow-hidden"
+                          style={{ color: TEAL }}
+                        >
+                          {item.label}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </motion.a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right CTA */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <motion.a
+              href="/QuantiraViz"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-semibold"
+              style={{
+                background: `linear-gradient(135deg, ${TEAL}, ${PURPLE})`,
+                color: "#fff",
+                boxShadow: isProduct
+                  ? `0 0 0 2px rgba(255,255,255,0.85), 0 0 26px ${TEAL}90`
+                  : `0 0 20px ${TEAL}40`,
+              }}
+              animate={isProduct ? { scale: 1.05 } : { scale: 1 }}
+              whileHover={{ scale: 1.05, boxShadow: `0 0 30px ${TEAL}60` }}
+              whileTap={{ scale: 0.97 }}
+            >
+              QuantiraViz <ArrowRight size={13} strokeWidth={2.5} />
+            </motion.a>
+          </div>
         </div>
-      </motion.div>
+      </motion.header>
 
       {/* ── MOBILE: top bar with hamburger ── */}
       <motion.div
@@ -245,6 +233,7 @@ const Navbar = () => {
         style={{
           background: `${BG}ee`,
           backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: `1px solid ${TEAL}18`,
         }}
       >
@@ -313,6 +302,7 @@ const Navbar = () => {
               background: `#0e1318ee`,
               border: `1px solid ${TEAL}22`,
               backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
               boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px ${TEAL}15`,
             }}
           >
@@ -368,7 +358,9 @@ const Navbar = () => {
                 style={{
                   background: `linear-gradient(135deg, ${TEAL}, ${PURPLE})`,
                   color: "#fff",
-                  boxShadow: `0 0 20px ${TEAL}35`,
+                  boxShadow: isProduct
+                    ? `0 0 0 2px rgba(255,255,255,0.85), 0 0 26px ${TEAL}90`
+                    : `0 0 20px ${TEAL}35`,
                 }}
               >
                 Explore QuantiraViz <ArrowRight size={14} />

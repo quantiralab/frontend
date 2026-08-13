@@ -219,7 +219,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-24 lg:pt-0"
+      className="relative min-h-screen flex items-center overflow-hidden pt-32 lg:pt-20"
       style={{
         backgroundImage: "url(/images/Hero.webp)",
         backgroundSize: "cover",

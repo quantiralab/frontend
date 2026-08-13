@@ -12,16 +12,15 @@ const features = [
   { icon: Users,      title: "Real-time Collaboration",  desc: "Work together on the same map with live cursors and edits across your entire team.",                                                          color: PURPLE, tag: "LIVE"   },
   { icon: ZoomIn,     title: "Infinite Zoom Canvas",     desc: "Dive deeper into any node with fractal-like zoom levels, infinitely deep.",                                                                   color: TEAL,   tag: "CANVAS" },
   { icon: Search,     title: "Smart Search",             desc: "Find any concept across all your maps in milliseconds with AI-powered search.",                                                               color: PURPLE, tag: "AI"     },
-  { icon: FileInput,  title: "Import Anything",          desc: "PDFs, URLs, Notion, Slack, Google Docs — we handle it all seamlessly.",                                                                      color: TEAL,   tag: "SYNC"   },
+  { icon: FileInput,  title: "Import Anything",          desc: "PDFs, URLs, Notion, Slack, Google Docs, and more. We handle it all seamlessly.",                                                                      color: TEAL,   tag: "SYNC"   },
   { icon: FileOutput, title: "Export Everywhere",        desc: "Figma, PDF, PNG, Markdown, or embed live maps anywhere you need.",                                                                           color: PURPLE, tag: "OUT"    },
   { icon: Palette,    title: "Custom Themes",            desc: "Match your brand with fully customizable visual styles and color schemes.",                                                                   color: TEAL,   tag: "STYLE"  },
   { icon: LineChart,  title: "AI Insights",              desc: "Get summaries, gap analysis, and smart suggestions generated from your maps.",                                                               color: PURPLE, tag: "INTEL"  },
- 
 ];
 
 /* ── ROW HEIGHT must match the rendered card height ── */
-const ROW_H = 88;   // px — approximate height of each feature row including gap
-const GAP    = 12;  // px — gap between rows
+const ROW_H = 88;   // px - approximate height of each feature row including gap
+const GAP    = 12;  // px - gap between rows
 const TOTAL  = features.length * ROW_H + (features.length - 1) * GAP;
 const HUB_D  = 180; // hub circle diameter
 
@@ -206,7 +205,7 @@ const Features = () => (
             transition={{ duration: 1, delay: 0.3 }}
           />
 
-          {/* horizontal branch lines — one per feature row */}
+          {/* horizontal branch lines - one per feature row */}
           {features.map((f, i) => {
             // each row occupies (ROW_H + GAP) px; centre of row i:
             const rowCentre = i * (ROW_H + GAP) + ROW_H / 2;

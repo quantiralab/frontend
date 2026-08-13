@@ -8,17 +8,17 @@ const links = {
 
 const socials = [
   { Icon: Twitter, href: " https://x.com/QuantiraLab", label: "Twitter" },
-  { Icon: Facebook, href: "https://www.facebook.com/QuantiraLab", label: "Facebook" },
+  { Icon: Facebook, href: "https://www.facebook.com/QuantiraLab0", label: "Facebook" },
   { Icon: Linkedin, href: "https://linkedin.com", label: "Linkedin" },
   { Icon: Youtube, href: " https://www.youtube.com/@QuantiraLab", label: "Youtube" },
 ];
 
 const linkHrefs: Record<string, Record<string, string>> = {
   Product: {
-    "Features": "#features",
-    "Pricing": "#pricing",
-    "About": "#about",
-    "Contact": "#contact",
+    "Features": "/#features",
+    "Pricing": "/#pricing",
+    "About": "/#about",
+    "Contact": "/#contact",
   },
   Legal: {
     "Privacy": "/privacy",
@@ -78,7 +78,7 @@ const Footer = () => (
       <div className="neon-line mt-12 mb-8" />
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-muted-foreground">© 2026 KnoViz. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">© 2026 Quantira AI Lab. All rights reserved.</p>
         {/* <p className="text-xs text-muted-foreground">Made with ❤️ for curious minds</p> */}
       </div>
     </div>

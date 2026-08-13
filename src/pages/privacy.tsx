@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Privacy() {
   useEffect(() => {
@@ -7,9 +9,9 @@ export default function Privacy() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-    
-      
-      <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <Navbar />
+
+      <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20">
         {/* Header Section */}
         <div className="mb-16 space-y-4">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#0ABAB5] bg-clip-text text-transparent">
@@ -61,7 +63,7 @@ export default function Privacy() {
                   <span className="font-bold text-[#56DFCF]">Affiliate</span> means an entity that controls, is controlled by, or is under common control with a party.
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
-                  <span className="font-bold text-[#56DFCF]">Company</span> refers to quantiralab, 1 Market St, San Francisco, CA 94105, United States.
+                  <span className="font-bold text-[#56DFCF]">Company</span> refers to Quantira AI Lab, 1 Market St, San Francisco, CA 94105, United States.
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
                   <span className="font-bold text-[#56DFCF]">Cookies</span> are small files that are placed on Your computer, mobile device or any other device by a website.
@@ -85,7 +87,7 @@ export default function Privacy() {
                   <span className="font-bold text-[#56DFCF]">Usage Data</span> refers to data collected automatically from the Service infrastructure.
                 </li>
                 <li className="text-base sm:text-lg leading-relaxed">
-                  <span className="font-bold text-[#56DFCF]">Website</span> refers to quantiralab, accessible from{" "}
+                  <span className="font-bold text-[#56DFCF]">Website</span> refers to Quantira AI Lab, accessible from{" "}
                   <a 
                     href="https://www.quantiralab.com" 
                     target="_blank" 
@@ -205,7 +207,22 @@ export default function Privacy() {
           <p className="text-base sm:text-lg text-foreground mb-3">
             If you have any questions about this Privacy Policy, You can contact us:
           </p>
-          <div className="space-y-2">
+          <div className="space-y-3">
+            <p className="text-base sm:text-lg">
+              Company Address:{" "}
+              <span className="font-semibold">
+                1 Market St, San Francisco, CA 94105, United States
+              </span>
+            </p>
+            <p className="text-base sm:text-lg">
+              Phone:{" "}
+              <a 
+                href="tel:+14156297308" 
+                className="text-[#56DFCF] hover:text-[#0ABAB5] transition-colors font-semibold"
+              >
+                +1 (415) 629-7308
+              </a>
+            </p>
             <p className="text-base sm:text-lg">
               Email:{" "}
               <a 
@@ -233,7 +250,7 @@ export default function Privacy() {
         </section>
       </main>
 
-      
+      <Footer />
     </div>
   );
 }

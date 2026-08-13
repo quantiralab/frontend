@@ -8,6 +8,7 @@ import {
   ArrowRight,
   CheckCircle2,
   MapPin,
+  Phone,
   Clock,
   Zap,
 } from "lucide-react";
@@ -44,9 +45,11 @@ const channels = [
 ];
 
 const meta = [
-  { icon: MapPin, text: "1 Market St, San Francisco, CA 94105, United States" },
-  { icon: Clock,  text: "Response within 24 hours" },
-  { icon: Zap,    text: "Trusted by 150K+ users" },
+  { icon: MapPin, text: "1 Market St, San Francisco, CA 94105, United States", href: undefined as string | undefined },
+  { icon: Phone,  text: "+1 (415) 629-7308",                                   href: "tel:+14156297308" },
+  { icon: Mail,   text: "contact@quantiralab.com",                             href: "mailto:contact@quantiralab.com" },
+  { icon: Clock,  text: "Response within 24 hours",                            href: undefined as string | undefined },
+  { icon: Zap,    text: "Trusted by 150K+ users",                              href: undefined as string | undefined },
 ];
 
 const topics = ["General inquiry", "Request a demo", "Partnership", "Press & media", "Support"];
@@ -233,13 +236,13 @@ const Contact = () => {
                 We reply to every message — personally.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                No support bots, no ticket queues. A real human from the KnoViz team will read your message and get back to you.
+                No support bots, no ticket queues. A real human from the Quantira AI Lab team will read your message and get back to you.
               </p>
             </div>
 
             {/* Meta info */}
             <div className="space-y-3">
-              {meta.map(({ icon: Icon, text }, i) => (
+              {meta.map(({ icon: Icon, text, href }, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -247,7 +250,13 @@ const Contact = () => {
                   >
                     <Icon size={14} style={{ color: "#0ABAB5" }} />
                   </div>
-                  <p className="text-sm text-muted-foreground">{text}</p>
+                  {href ? (
+                    <a href={href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {text}
+                    </a>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">{text}</p>
+                  )}
                 </div>
               ))}
             </div>
