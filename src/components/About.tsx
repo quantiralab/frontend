@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
   Map, Users, Globe, FileText, Zap, Shield, Layers,
-  ArrowUpRight, Brain, Sparkles, Network,
+  ArrowRight, Brain, Sparkles, Network,
 } from "lucide-react";
 
 /* ─── DATA ─────────────────────────────────────────────── */
@@ -17,7 +17,7 @@ const values = [
   { icon: Brain,   title: "AI-first thinking",    desc: "Every feature starts with: how can intelligence make this effortless?",    color: "#0ABAB5" },
   { icon: Shield,  title: "Privacy by design",    desc: "Your knowledge is yours. End-to-end encrypted, never used for training.",  color: "#c44dff" },
   { icon: Layers,  title: "Depth over breadth",   desc: "We go deep on knowledge mapping instead of building a feature factory.",   color: "#56DFCF" },
-  { icon: Network, title: "Connected by default", desc: "Collaboration is not a tier — it is the foundation of how KnoViz works.", color: "#ff6b9d" },
+  { icon: Network, title: "Connected by default", desc: "Collaboration is not a tier, it is the foundation of how KnoViz works.", color: "#ff6b9d" },
 ];
 
 const team = [
@@ -87,47 +87,6 @@ const ParallaxImageCard = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   return (
     <div ref={ref} className="relative rounded-3xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
-      {/* <motion.div style={{ y }} className="absolute inset-[-10%]">
-        <div className="w-full h-full" style={{
-          background: `radial-gradient(circle at 30% 40%, rgba(10,186,181,0.25) 0%, transparent 50%),
-            radial-gradient(circle at 75% 60%, rgba(196,77,255,0.20) 0%, transparent 45%),
-            radial-gradient(circle at 55% 20%, rgba(86,223,207,0.15) 0%, transparent 40%),
-            linear-gradient(135deg, rgba(10,186,181,0.08) 0%, rgba(196,77,255,0.08) 100%)`,
-          backgroundColor: "rgba(255,255,255,0.03)",
-        }} />
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 450" fill="none" style={{ opacity: 0.6 }}>
-          <line x1="150" y1="120" x2="300" y2="200" stroke="#0ABAB5" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="300" y1="200" x2="420" y2="130" stroke="#0ABAB5" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="300" y1="200" x2="380" y2="320" stroke="#c44dff" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="380" y1="320" x2="200" y2="330" stroke="#c44dff" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="200" y1="330" x2="150" y2="120" stroke="#56DFCF" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="420" y1="130" x2="480" y2="280" stroke="#ff6b9d" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="480" y1="280" x2="380" y2="320" stroke="#ff6b9d" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="100" y1="260" x2="200" y2="330" stroke="#56DFCF" strokeWidth="1" strokeDasharray="4 4"/>
-          <line x1="150" y1="120" x2="80"  y2="180" stroke="#0ABAB5" strokeWidth="1" strokeDasharray="4 4"/>
-          <circle cx="300" cy="200" r="18" fill="rgba(10,186,181,0.2)"  stroke="#0ABAB5" strokeWidth="1.5"/>
-          <circle cx="300" cy="200" r="6"  fill="#0ABAB5"/>
-          <circle cx="150" cy="120" r="12" fill="rgba(86,223,207,0.2)"  stroke="#56DFCF" strokeWidth="1.5"/>
-          <circle cx="150" cy="120" r="4"  fill="#56DFCF"/>
-          <circle cx="420" cy="130" r="12" fill="rgba(196,77,255,0.2)"  stroke="#c44dff" strokeWidth="1.5"/>
-          <circle cx="420" cy="130" r="4"  fill="#c44dff"/>
-          <circle cx="380" cy="320" r="14" fill="rgba(255,107,157,0.2)" stroke="#ff6b9d" strokeWidth="1.5"/>
-          <circle cx="380" cy="320" r="5"  fill="#ff6b9d"/>
-          <circle cx="200" cy="330" r="10" fill="rgba(10,186,181,0.2)"  stroke="#0ABAB5" strokeWidth="1.5"/>
-          <circle cx="200" cy="330" r="3"  fill="#0ABAB5"/>
-          <circle cx="480" cy="280" r="10" fill="rgba(86,223,207,0.2)"  stroke="#56DFCF" strokeWidth="1.5"/>
-          <circle cx="480" cy="280" r="3"  fill="#56DFCF"/>
-          <circle cx="100" cy="260" r="8"  fill="rgba(196,77,255,0.2)"  stroke="#c44dff" strokeWidth="1.5"/>
-          <circle cx="100" cy="260" r="3"  fill="#c44dff"/>
-          <circle cx="80"  cy="180" r="8"  fill="rgba(255,107,157,0.2)" stroke="#ff6b9d" strokeWidth="1.5"/>
-          <circle cx="80"  cy="180" r="3"  fill="#ff6b9d"/>
-          <text x="310" y="196" fill="#0ABAB5" fontSize="9" fontFamily="monospace">core concept</text>
-          <text x="160" y="116" fill="#56DFCF" fontSize="8" fontFamily="monospace">research</text>
-          <text x="430" y="126" fill="#c44dff" fontSize="8" fontFamily="monospace">insight</text>
-          <text x="390" y="316" fill="#ff6b9d" fontSize="8" fontFamily="monospace">output</text>
-        </svg>
-      </motion.div>
-      <div className="absolute inset-0 rounded-3xl" style={{ border:"1px solid rgba(255,255,255,0.08)", background:"linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 60%)" }}/> */}
       <img src= "/images/Making Knowledge Visible.webp" alt="Parallax Visual" className="w-full h-full object-cover"/>
      </div>
   );
@@ -307,7 +266,7 @@ const MarqueeRow = ({ items, direction = 1, speed = 35 }: {
 };
 
 /* ─── MAIN COMPONENT ───────────────────────────────────── */
-const About = () => (
+const About = ({ landingPage = false }: { landingPage?: boolean }) => (
   <section id="about" className="section-padding relative overflow-hidden">
     <div className="absolute inset-0 -z-10" style={{ background:"radial-gradient(ellipse 60% 40% at 20% 20%,rgba(10,186,181,0.06) 0%,transparent 60%)" }}/>
     <div className="absolute inset-0 -z-10" style={{ background:"radial-gradient(ellipse 50% 50% at 80% 70%,rgba(196,77,255,0.06) 0%,transparent 70%)" }}/>
@@ -325,114 +284,133 @@ const About = () => (
             Making knowledge <span className="gradient-text-hero">visible</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4 text-base">
-             QuantiraViz was born from a simple frustration: the world’s knowledge is trapped in linear documents. We believe true understanding comes from seeing connections, not just reading pages.
+             QuantiraViz was born from a simple frustration: the world's knowledge is trapped in linear documents. We believe true understanding comes from seeing connections, not just reading pages.
           </p>
           <p className="text-muted-foreground leading-relaxed text-base">
            Our mission is to make every piece of knowledge explorable, shareable, and visually clear. Built by a team of designers, researchers, and lifelong learners who believe the future of understanding is interactive and visual.
           </p>
+          {landingPage && (
+            <motion.a
+              href="/about"
+              className="btn-gradient inline-flex items-center gap-2 text-sm px-6 py-3 rounded-xl font-semibold mt-6"
+              whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(10,186,181,0.55)" }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Learn more about us
+              <ArrowRight size={15} strokeWidth={2.5} />
+            </motion.a>
+          )}
         </motion.div>
         <motion.div initial={{ opacity:0,x:40 }} whileInView={{ opacity:1,x:0 }} viewport={{ once:true }} transition={{ duration:0.6,delay:0.1 }}>
           <ParallaxImageCard/>
         </motion.div>
       </div>
 
-      {/* ── SECTION 3 ── */}
-      <div className="grid lg:grid-cols-5 gap-6 items-stretch">
-        <motion.div className="lg:col-span-3 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between"
-          style={{ backgroundImage:`url('/images/our Vision.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(10,186,181,0.18)", minHeight:280 }}
-          initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
-          <div className="absolute top-0 right-0 w-64 h-64 rounded-full -z-0" style={{ background:"radial-gradient(circle,rgba(10,186,181,0.12) 0%,transparent 70%)",transform:"translate(30%,-30%)" }}/>
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-4">
-              <Zap size={16} color="#0ABAB5"/>
-              <span style={{ fontSize:11,color:"#0ABAB5",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our vision</span>
+      {!landingPage && (
+        <>
+          {/* ── SECTION 3 ── */}
+          <div className="grid lg:grid-cols-5 gap-6 items-stretch">
+            <motion.div className="lg:col-span-3 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between"
+              style={{ backgroundImage:`url('/images/our Vision.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(10,186,181,0.18)", minHeight:280 }}
+              initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full -z-0" style={{ background:"radial-gradient(circle,rgba(10,186,181,0.12) 0%,transparent 70%)",transform:"translate(30%,-30%)" }}/>
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <Zap size={16} color="#0ABAB5"/>
+                  <span style={{ fontSize:11,color:"#0ABAB5",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our vision</span>
+                </div>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
+                  A world where complex knowledge is instantly understandable by anyone
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  We imagine a future where you can paste any document, any link, any idea, and in seconds see a living map of how everything connects. No expertise required. Just curiosity.
+                </p>
+              </div>
+              <div className="relative z-10 mt-6 pt-6" style={{ borderTop:"1px solid rgba(10,186,181,0.15)" }}>
+                <p className="text-xs text-muted-foreground">Founded in San Francisco on 14 January 2023 · Remote-first globally</p>
+              </div>
+            </motion.div>
+            <div className="lg:col-span-2 flex flex-col gap-4">
+              <motion.div className="rounded-3xl p-6 flex flex-col gap-3 relative overflow-hidden"
+                style={{ backgroundImage:`url('/images/mission.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(196,77,255,0.18)",flex:1 }}
+                initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.1 }}>
+                <div className="flex items-center gap-2">
+                  <span style={{ width:8,height:8,borderRadius:"50%",background:"#c44dff",display:"inline-block",boxShadow:"0 0 8px rgba(196,77,255,0.6)" }}/>
+                  <span style={{ fontSize:11,color:"#c44dff",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our mission</span>
+                </div>
+                <p className="font-display font-semibold text-base leading-snug">Build AI tools that transform how humans learn, research, and collaborate.</p>
+              </motion.div>
+              <motion.div className="rounded-3xl p-6 relative overflow-hidden"
+                style={{ backgroundImage:`url('/images/belief.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(255,107,157,0.18)",flex:1 }}
+                initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.2 }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span style={{ width:8,height:8,borderRadius:"50%",background:"#ff6b9d",display:"inline-block",boxShadow:"0 0 8px rgba(255,107,157,0.6)" }}/>
+                  <span style={{ fontSize:11,color:"#ff6b9d",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our belief</span>
+                </div>
+                <p className="font-display font-semibold text-base leading-snug">Understanding comes from seeing connections, not reading pages.</p>
+              </motion.div>
             </div>
-            <h3 className="font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
-              A world where complex knowledge is instantly understandable by anyone
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              We imagine a future where you can paste any document, any link, any idea — and in seconds see a living map of how everything connects. No expertise required. Just curiosity.
-            </p>
           </div>
-          <div className="relative z-10 mt-6 pt-6" style={{ borderTop:"1px solid rgba(10,186,181,0.15)" }}>
-            <p className="text-xs text-muted-foreground">Founded in San Francisco on 14 January 2023 · Remote-first globally</p>
-          </div>
-        </motion.div>
-        <div className="lg:col-span-2 flex flex-col gap-4">
-          <motion.div className="rounded-3xl p-6 flex flex-col gap-3 relative overflow-hidden"
-            style={{ backgroundImage:`url('/images/mission.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(196,77,255,0.18)",flex:1 }}
-            initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.1 }}>
-            <div className="flex items-center gap-2">
-              <span style={{ width:8,height:8,borderRadius:"50%",background:"#c44dff",display:"inline-block",boxShadow:"0 0 8px rgba(196,77,255,0.6)" }}/>
-              <span style={{ fontSize:11,color:"#c44dff",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our mission</span>
-            </div>
-            <p className="font-display font-semibold text-base leading-snug">Build AI tools that transform how humans learn, research, and collaborate.</p>
-          </motion.div>
-          <motion.div className="rounded-3xl p-6 relative overflow-hidden"
-            style={{ backgroundImage:`url('/images/belief.webp')`, backgroundSize:"cover", backgroundPosition:"center", border:"1px solid rgba(255,107,157,0.18)",flex:1 }}
-            initial={{ opacity:0,y:30 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:0.2 }}>
-            <div className="flex items-center gap-2 mb-2">
-              <span style={{ width:8,height:8,borderRadius:"50%",background:"#ff6b9d",display:"inline-block",boxShadow:"0 0 8px rgba(255,107,157,0.6)" }}/>
-              <span style={{ fontSize:11,color:"#ff6b9d",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase" }}>Our belief</span>
-            </div>
-            <p className="font-display font-semibold text-base leading-snug">Understanding comes from seeing connections — not reading pages.</p>
-          </motion.div>
-        </div>
-      </div>
+        </>
+      )}
 
-      {/* ── SECTION 5 — ZIGZAG TIMELINE ── */}
-      <div className="" style={{ backgroundImage:`url('/images/journey.webp')`, backgroundSize:"cover", backgroundPosition:"center", }}>
-        <motion.div className="mb-16 text-center"
-          initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <motion.div className="w-2 h-2 rounded-full" style={{ background:TEAL }}
-              animate={{ scale:[1,1.7,1],opacity:[1,0.25,1] }} transition={{ duration:2,repeat:Infinity }}/>
-            <span className="text-xs font-mono tracking-widest" style={{ color:TEAL }}>OUR STORY</span>
-            <div className="h-px w-16" style={{ background:`linear-gradient(90deg,${TEAL}60,transparent)` }}/>
-          </div>
-          <h3 className="font-display font-bold text-2xl sm:text-3xl mb-2">
-            The <span className="gradient-text">journey</span> so far
-          </h3>
-          <p className="text-muted-foreground text-sm max-w-md mx-auto">From a whiteboard idea to a global platform.</p>
-        </motion.div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="hidden sm:block"><Spine/></div>
-          <div className="flex flex-col gap-12 relative" style={{ zIndex:1 }}>
-            <div className="flex flex-col gap-5 sm:hidden">
-              {milestones.map((m,i)=>(
-                <motion.div key={i} className="relative overflow-hidden rounded-2xl p-5"
-                  style={{ background:`linear-gradient(135deg,#0d1117 0%,${m.color}0d 100%)`,border:`1px solid ${m.color}28` }}
-                  initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:i*0.1 }}>
-                  <NeuralDeco color={m.color}/>
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <DiamondNode color={m.color} num={m.num}/>
-                      <div>
-                        <p className="font-mono text-xs" style={{ color:`${m.color}75` }}>{m.year}</p>
-                        <span className="text-[9px] font-mono font-bold tracking-widest px-1.5 py-0.5" style={{ color:m.color,background:`${m.color}12`,border:`1px solid ${m.color}30` }}>{m.tag}</span>
+      {!landingPage && (
+        <>
+          {/* ── SECTION 5 — ZIGZAG TIMELINE ── */}
+          <div className="" style={{ backgroundImage:`url('/images/journey.webp')`, backgroundSize:"cover", backgroundPosition:"center", }}>
+            <motion.div className="mb-16 text-center"
+              initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}>
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <motion.div className="w-2 h-2 rounded-full" style={{ background:TEAL }}
+                  animate={{ scale:[1,1.7,1],opacity:[1,0.25,1] }} transition={{ duration:2,repeat:Infinity }}/>
+                <span className="text-xs font-mono tracking-widest" style={{ color:TEAL }}>OUR STORY</span>
+                <div className="h-px w-16" style={{ background:`linear-gradient(90deg,${TEAL}60,transparent)` }}/>
+              </div>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl mb-2">
+                The <span className="gradient-text">journey</span> so far
+              </h3>
+              <p className="text-muted-foreground text-sm max-w-md mx-auto">From a whiteboard idea to a global platform.</p>
+            </motion.div>
+            <div className="relative max-w-5xl mx-auto">
+              <div className="hidden sm:block"><Spine/></div>
+              <div className="flex flex-col gap-12 relative" style={{ zIndex:1 }}>
+                <div className="flex flex-col gap-5 sm:hidden">
+                  {milestones.map((m,i)=>(
+                    <motion.div key={i} className="relative overflow-hidden rounded-2xl p-5"
+                      style={{ background:`linear-gradient(135deg,#0d1117 0%,${m.color}0d 100%)`,border:`1px solid ${m.color}28` }}
+                      initial={{ opacity:0,y:20 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }} transition={{ delay:i*0.1 }}>
+                      <NeuralDeco color={m.color}/>
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-2">
+                          <DiamondNode color={m.color} num={m.num}/>
+                          <div>
+                            <p className="font-mono text-xs" style={{ color:`${m.color}75` }}>{m.year}</p>
+                            <span className="text-[9px] font-mono font-bold tracking-widest px-1.5 py-0.5" style={{ color:m.color,background:`${m.color}12`,border:`1px solid ${m.color}30` }}>{m.tag}</span>
+                          </div>
+                        </div>
+                        <h4 className="font-display font-bold text-base mb-1.5 uppercase tracking-wide">{m.title}</h4>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{m.desc}</p>
                       </div>
-                    </div>
-                    <h4 className="font-display font-bold text-base mb-1.5 uppercase tracking-wide">{m.title}</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{m.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="hidden sm:flex flex-col gap-12">
-              {milestones.map((m,i)=><ZigzagRow key={i} m={m} index={i}/>)}
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="hidden sm:flex flex-col gap-12">
+                  {milestones.map((m,i)=><ZigzagRow key={i} m={m} index={i}/>)}
+                </div>
+              </div>
+              <motion.div className="flex justify-center mt-10"
+                initial={{ opacity:0,scale:0 }} whileInView={{ opacity:1,scale:1 }} viewport={{ once:true }} transition={{ delay:0.9,duration:0.4 }}>
+                <div className="flex items-center gap-2 px-5 py-2.5 font-mono text-xs font-bold tracking-widest"
+                  style={{ background:`linear-gradient(135deg,${TEAL}18,${PURPLE}12)`,border:`1px solid ${TEAL}35`,color:TEAL,clipPath:"polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)",boxShadow:`0 0 24px ${TEAL}18` }}>
+                  <motion.div className="w-1.5 h-1.5 rounded-full" style={{ background:TEAL }}
+                    animate={{ opacity:[1,0.2,1],scale:[1,1.5,1] }} transition={{ duration:1.5,repeat:Infinity }}/>
+                  AND GROWING
+                </div>
+              </motion.div>
             </div>
           </div>
-          <motion.div className="flex justify-center mt-10"
-            initial={{ opacity:0,scale:0 }} whileInView={{ opacity:1,scale:1 }} viewport={{ once:true }} transition={{ delay:0.9,duration:0.4 }}>
-            <div className="flex items-center gap-2 px-5 py-2.5 font-mono text-xs font-bold tracking-widest"
-              style={{ background:`linear-gradient(135deg,${TEAL}18,${PURPLE}12)`,border:`1px solid ${TEAL}35`,color:TEAL,clipPath:"polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)",boxShadow:`0 0 24px ${TEAL}18` }}>
-              <motion.div className="w-1.5 h-1.5 rounded-full" style={{ background:TEAL }}
-                animate={{ opacity:[1,0.2,1],scale:[1,1.5,1] }} transition={{ duration:1.5,repeat:Infinity }}/>
-              AND GROWING
-            </div>
-          </motion.div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* ══════════════════════════════════════════════════
           SECTION 7 — HORIZONTAL SCROLLING MARQUEE

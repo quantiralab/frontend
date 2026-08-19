@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Privacy from "./pages/privacy.tsx";
 import Terms from "./pages/Terms.tsx";
+import AboutPage from "./pages/About.tsx";
 import QuantiraViz from "./pages/QuantiraViz.tsx";
 import CheckoutSandbox from "@/components/Checkout.tsx";
 import CookiesBanner from "@/components/CookiesBanner.tsx";
@@ -24,6 +25,7 @@ const App = () => (
         <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/QuantiraViz" element={<QuantiraViz />} />
           <Route path="/quantiraviz" element={<QuantiraViz />} />
           <Route path="/checkout" element={<CheckoutSandbox />} />

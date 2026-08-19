@@ -9,6 +9,7 @@ const ScrollToHash = () => {
 
   useEffect(() => {
     if (!hash) {
+      window.scrollTo(0, 0);
       return;
     }
 

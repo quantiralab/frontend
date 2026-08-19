@@ -11,7 +11,7 @@ const testimonials = [
     step: "01",
     tag: "RESEARCH & DISCOVERY",
     title: "Smart Knowledge Mapping",
-    quote: "QuantiraViz turned our 250-page research reports into interactive, explorable knowledge maps our team actually uses. It's like Google Maps—but for ideas and insights.",
+    quote: "QuantiraViz turned our 250-page research reports into interactive, explorable knowledge maps our team actually uses. It's like Google Maps, but for ideas and insights.",
     name: "Steffani Nina",
     role: "Head of Research, Synapse Labs",
     avatar: "/images/17.webp",
@@ -563,7 +563,7 @@ const Testimonials = () => {
         </div>
 
         <p className="text-xs font-mono mt-4" style={{ color: `${TEAL}45` }}>
-          Case study {current + 1} of {testimonials.length} — {t.title}
+          Case study {current + 1} of {testimonials.length}: {t.title}
         </p>
       </div>
     </section>

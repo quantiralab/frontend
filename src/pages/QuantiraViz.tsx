@@ -178,7 +178,7 @@ const QuantiraViz = () => {
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-8">
-                QuantiraViz helps teams turn dense documents, research collections, and scattered notes into an explorable knowledge map. It is built for moments when you need more than a summary — you need to understand the landscape, see what connects, and act with confidence.
+                QuantiraViz helps teams turn dense documents, research collections, and scattered notes into an explorable knowledge map. It is built for moments when you need more than a summary, you need to understand the landscape, see what connects, and act with confidence.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
@@ -361,7 +361,7 @@ const QuantiraViz = () => {
                 A simple journey from <span className="gradient-text-pink">input to insight</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                The product is designed to feel intuitive from the first upload. You do not need to engineer the process — you just bring the material and start exploring.
+                The product is designed to feel intuitive from the first upload. You do not need to engineer the process, you just bring the material and start exploring.
               </p>
             </motion.div>
 

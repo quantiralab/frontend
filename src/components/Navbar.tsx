@@ -12,7 +12,7 @@ const navItems = [
   { label: "How it Works", icon: BookOpen,   href: "/#how-it-works"    },
   { label: "Features",     icon: LayoutGrid, href: "/#features"        },
   { label: "Pricing",      icon: DollarSign, href: "/#pricing"         },
-  { label: "Company",      icon: Building2,  href: "/#about"           },
+  { label: "Company",      icon: Building2,  href: "/about"            },
 ];
 
 const Navbar = () => {

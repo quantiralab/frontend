@@ -179,7 +179,7 @@ const Contact = () => {
             Get in <span className="gradient-text-pink">touch</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Whether you want a demo, have a question, or just want to say hi — we're here and we'd love to hear from you.
+            Whether you want a demo, have a question, or just want to say hi, we're here and we'd love to hear from you.
           </p>
         </motion.div>
 
@@ -233,7 +233,7 @@ const Contact = () => {
               style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
             >
               <p className="font-display font-bold text-xl mb-3 leading-snug">
-                We reply to every message — personally.
+                We reply to every message. Personally.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 No support bots, no ticket queues. A real human from the Quantira AI Lab team will read your message and get back to you.
